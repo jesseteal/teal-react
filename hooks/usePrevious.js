@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 //   const [count, setCount] = useState(0);
 //   const prevCount = usePrevious(count);
 
-function usePrevious(value) {
+export const usePrevious = (value) => {
   // The ref object is a generic container whose current property is mutable ...
   // ... and can hold any value, similar to an instance property on a class
   const ref = useRef();
@@ -16,5 +16,3 @@ function usePrevious(value) {
   // Return previous value (happens before update in useEffect above)
   return ref.current;
 }
-
-export default usePrevious;

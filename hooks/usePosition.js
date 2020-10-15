@@ -2,7 +2,7 @@ import React from 'react';
 /*
 usage:
   const ref = React.useRef(null);
-  const { left, top } = React.usePosition(ref);
+  const { left, top } = Hooks.usePosition(ref);
 */
 
 const getStyle = (el, styleName) => window.getComputedStyle(el)[styleName];

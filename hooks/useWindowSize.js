@@ -1,5 +1,9 @@
 import React from 'react';
 
+/*
+usage:
+  const { height, width } = Hooks.useWindowSize();
+ */
 export function useWindowSize() {
   const isClient = typeof window === 'object';
 

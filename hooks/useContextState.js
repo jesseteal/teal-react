@@ -2,7 +2,7 @@ import React from 'react';
 
 // SETUP:
 // in index.js
-// import { Provider } from 'helpers/hooks/context';
+// import { Provider } from 'teal-react/hooks/context';
 //
 // <Provider>
 //   <App />
@@ -19,10 +19,11 @@ const Context = React.createContext([{}, () => {}]);
 export const Provider = ({ children }) => {
   const state = React.useState({});
   const value = React.useMemo(() => state, [state[0]]);// eslint-disable-line react-hooks/exhaustive-deps
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+  return React.createElement(Context.Provider, { value, children })
+  // return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
-export const useContextState = (contextKey, initialState) => {
+export const useContextState = (contextKey, initialState =  null) => {
   const [contextState, setContextState] = React.useContext(Context);
 
   const state = contextState[contextKey] != null

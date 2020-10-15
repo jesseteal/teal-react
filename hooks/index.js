@@ -1,17 +1,40 @@
-import * as windowSize from './windowSize';
-import * as dirty from './dirty';
-import * as mounting from './onMount';
-import * as position from './position';
-import * as context from './context';
-import * as debounce from './useDebounce';
+import * as useArray from './useArray';
+import * as useWindowSize from './useWindowSize';
+import * as useTrackObject from './useTrackObject';
+import * as useWindowScroll from './useWindowScroll';
+import * as useUpdate from './useUpdate';
+import * as useStateWithCallback from './useStateWithCallback';
+import * as usePromise from './usePromise';
+// import * as useFetch from './useFetch';
+import * as useOnScreen from './useOnScreen';
+import * as useMap from './useMap';
+import * as useLocalStorage from './useLocalStorage';
+import * as useInputValue from './useInputValue';
+import * as useEventListener from './useEventListener';
+import * as useOnMount from './useOnMount';
+import * as usePosition from './usePosition';
+import * as usePrevious from './usePrevious';
+import * as useContextState from './useContextState';
+import * as useDebounce from './useDebounce';
 
-const Hooks = {
-  ...mounting,
-  ...dirty,
-  ...windowSize,
-  ...position,
-  ...context,
-  ...debounce
+export const Hooks = {
+  ...useArray,
+  ...useOnMount,
+  ...useTrackObject,
+  ...useWindowSize,
+  ...usePosition,
+  ...useContextState,
+  ...useDebounce,
+  ...useEventListener,
+  ...useInputValue,
+  ...useLocalStorage,
+  ...useMap,
+  ...useOnScreen,
+  // ...useFetch,
+  ...usePromise,
+  ...usePrevious,
+  ...useStateWithCallback,
+  ...useUpdate,
+  ...useWindowScroll
 }
-
 export default Hooks;

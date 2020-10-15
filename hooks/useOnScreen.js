@@ -5,7 +5,7 @@ import React from 'react';
 //
 // <div ref={ref}>target</div>
 
-function useOnScreen(rootMargin = '0px') {
+export function useOnScreen(rootMargin = '0px') {
   // State and setter for storing whether element is visible
   const [isIntersecting, setIntersecting] = React.useState(false);
   const ref = React.useRef();
@@ -30,5 +30,3 @@ function useOnScreen(rootMargin = '0px') {
 
   return [ref, isIntersecting];
 }
-
-module.exports = useOnScreen;
