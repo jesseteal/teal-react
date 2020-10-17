@@ -1,15 +1,14 @@
 {
-  "name": "teal-react",
-  "version": "1.0.0",
+  "name": "@jesseteal/teal-react",
+  "version": "1.0.1",
   "description": "A bundle of reusable React files for re-use in my projects.",
   "main": "index.js",
-  "module": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jesseteal/teal-react.git"
+    "url": "https://github.com/jesseteal/teal-react"
   },
   "author": "Jesse Teal",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jesseteal/teal-react/issues"
   },

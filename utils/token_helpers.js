@@ -7,16 +7,16 @@ var _onGetToken = null;
 var _override = null;
 
 export function set(t){
-  console.log('process.env',process.env);
+  // console.log('process.env',process.env);
   if(typeof t === 'string'){
     _encoded = t;
-    window.localStorage.setItem(token_key, _encoded);
+    window.localStorage && window.localStorage.setItem(token_key, _encoded);
     _onGetToken && _onGetToken(t);
   } else {
     // for clearing token only
     _encoded = null;
     _override = null;
-    window.localStorage.removeItem(token_key);
+    window.localStorage && window.localStorage.removeItem(token_key);
   }
 }
 
@@ -26,7 +26,7 @@ export function onGetToken(callback){
 
 function have_token(){
   if(!_encoded){ // try local storage
-    _encoded = window.localStorage.getItem(token_key);
+    _encoded = window.localStorage && window.localStorage.getItem(token_key);
   }
   return !!_encoded;
 }
