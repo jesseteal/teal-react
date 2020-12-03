@@ -3,7 +3,7 @@ import jwtDecode from 'jwt-decode';
 const token_key = (process.env && process.env.TOKEN_NAME) || 'teal-react-token';
 // local storage of token
 var _encoded = null;
-var _onGetToken = null;
+var _onTokenChange = [];
 var _override = null;
 
 export function set(t){
@@ -11,17 +11,22 @@ export function set(t){
   if(typeof t === 'string'){
     _encoded = t;
     window.localStorage && window.localStorage.setItem(token_key, _encoded);
-    _onGetToken && _onGetToken(t);
+
   } else {
     // for clearing token only
     _encoded = null;
     _override = null;
     window.localStorage && window.localStorage.removeItem(token_key);
   }
+  if(_onTokenChange.length){
+    for (var callback of _onTokenChange) {
+      callback(t)
+    }
+  }
 }
 
-export function onGetToken(callback){
-  _onGetToken = callback;
+export function onTokenChange(callback){
+  _onTokenChange.push(callback);
 }
 
 function have_token(){
