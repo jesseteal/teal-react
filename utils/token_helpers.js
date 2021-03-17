@@ -8,19 +8,18 @@ var _override = null;
 
 export function set(t){
   // console.log('process.env',process.env);
+  _override = null;
   if(typeof t === 'string'){
     _encoded = t;
     window.localStorage && window.localStorage.setItem(token_key, _encoded);
-
   } else {
     // for clearing token only
     _encoded = null;
-    _override = null;
     window.localStorage && window.localStorage.removeItem(token_key);
   }
   if(_onTokenChange.length){
     for (var callback of _onTokenChange) {
-      callback(t)
+      callback()
     }
   }
 }
@@ -76,6 +75,12 @@ export function hasRole(role, field = 'roles'){
   }
 }
 
+// used for impersonation / dev / debug work
 export function _overwrite(token){
   _override = token;
+  if(_onTokenChange.length){
+    for (var callback of _onTokenChange) {
+      callback()
+    }
+  }
 }
