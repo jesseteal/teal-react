@@ -4,14 +4,14 @@ export function int(i){
   return parseInt(i,10);
 }
 
-export function padNumber(num, maxwidth = 4){
+export function padNumber(num, maxwidth = 4, char = '0'){
   // if(typeof num === 'string'){
   //   num = parseInt(num,10)
   // }
   let s = num+"";
   const need = maxwidth - s.length;
   if (need < 1) return num;
-  return new Array(need + 1).join('0') + s;
+  return new Array(need + 1).join(char) + s;
 }
 
 export function formatNumber(num, precision = 0, showZero = true){

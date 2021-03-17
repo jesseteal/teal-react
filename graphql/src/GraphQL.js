@@ -69,7 +69,7 @@ const GraphQL = {
   // graphql helpers
   useSave: (table, clear_cache) => {
     const [createMutation] = useMutation(gql`
-      mutation update_${table}($input: ${table}Input!) {
+      mutation create_${table}($input: ${table}Input!) {
         create${table}(input: $input)
       }
     `);
