@@ -84,3 +84,7 @@ export function _overwrite(token){
     }
   }
 }
+
+export function decode(token){
+  return jwtDecode(token)
+}

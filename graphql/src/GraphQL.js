@@ -66,6 +66,14 @@ const GraphQL = {
     return result; // contains
   },
 
+  // pass-thru wrapper
+  useMutation: (query, config = {}) => {
+    const [mutate, { data, loading, error}] = useMutation(gql`${query}`, {
+      variables: config.variables || null
+    });
+    return [mutate, { data, loading, error}]
+  },
+
   // graphql helpers
   useSave: (table, clear_cache) => {
     const [createMutation] = useMutation(gql`
@@ -110,13 +118,31 @@ const GraphQL = {
     }
   },
 
-  useDelete: table => {
+  useDelete: (table, clear_cache) => {
     const [deleteMutation] = useMutation(gql`
       mutation delete_${table}($input: ${table}Input!) {
         delete${table}(input: $input)
       }
     `);
-    return data => deleteMutation({ variables: { input: data }});
+    // cache buster
+    const client = clear_cache ? useApolloClient() : null;
+    let cache_buster = clear_cache ?
+    (r) => {
+      // expecting array or string
+      const arr = typeof clear_cache === 'string' ? clear_cache.split(',') : clear_cache;
+      arr.forEach(t => {
+        // console.log('BUSTING',t);
+        client.cache.evict({
+          id: 'ROOT_QUERY',
+          fieldName: t
+        })
+      });
+      return r; // pass through values
+    }
+    :
+    r => r // pass through values, do nothing
+
+    return data => deleteMutation({ variables: { input: data }}).then(cache_buster);
   },
 
   useSaveDelete: (table, clear_cache) => {
