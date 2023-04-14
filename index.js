@@ -40,12 +40,12 @@ export const Hooks = {
   ...usePrevious,
   ...useStateWithCallback,
   ...useUpdate,
-  ...useWindowScroll
-}
+  ...useWindowScroll,
+};
 // const TealReact = {
 //   // tbd
 // };
 // export const Hooks = _Hooks;
 export default {
-  Hooks
+  Hooks,
 };
