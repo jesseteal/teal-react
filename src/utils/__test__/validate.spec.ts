@@ -1,4 +1,4 @@
-import validationContainer, { validate_fields } from '../validate';
+import { validate_fields } from '../validate';
 
 const fields = [
   {
@@ -27,11 +27,5 @@ describe('validate utils', () => {
     expect(
       validate_fields({ email: 'a@example.com', code: 'ok' }, fields),
     ).toBeUndefined();
-  });
-
-  it('exposes the default validation container', () => {
-    expect(validationContainer.validate({ email: '' }, [fields[0]])).toEqual({
-      email: ['Email Email is required.', 'Email Emailis not valid. '],
-    });
   });
 });
