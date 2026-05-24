@@ -3,10 +3,15 @@ import { useCallback, useMemo } from 'react';
 import { useAppState } from '../hooks/useAppState';
 import { isNullOrEmpty } from './helpers';
 
-const token_key = (process.env && process.env.TOKEN_NAME) || 'teal-react-token';
+const token_key =
+  (typeof process !== 'undefined' && process.env?.TOKEN_NAME) ||
+  'teal-react-token';
 
 let encodedToken: string | null;
 const _onTokenChange: Array<(token: string | null) => void> = [];
+
+const getLocalStorage = () =>
+  typeof window !== 'undefined' ? window.localStorage : undefined;
 
 /**
  * Saves the authentication token to local storage and triggers any registered callback functions.
@@ -14,11 +19,12 @@ const _onTokenChange: Array<(token: string | null) => void> = [];
  */
 export function saveToken(token?: string | null): void {
   encodedToken = token ?? null;
+  const localStorage = getLocalStorage();
 
   if (encodedToken !== null) {
-    window.localStorage?.setItem(token_key, encodedToken);
+    localStorage?.setItem(token_key, encodedToken);
   } else {
-    window.localStorage?.removeItem(token_key);
+    localStorage?.removeItem(token_key);
   }
 
   for (const callback of _onTokenChange) {
@@ -33,8 +39,7 @@ export function onTokenChange(callback: any): void {
 export const isAuthenticated = () => {
   if (!encodedToken) {
     // try local storage
-    encodedToken =
-      window.localStorage && window.localStorage.getItem(token_key);
+    encodedToken = getLocalStorage()?.getItem(token_key) || null;
   }
   return !!encodedToken;
 };

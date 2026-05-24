@@ -1,7 +1,7 @@
 // @ts-ignore
-import React from "react";
+import React from 'react';
 // @ts-ignore
-import _ from "lodash";
+import _ from 'lodash';
 
 // USAGE:
 // Hooks.useTrackObject('my var', XXX)

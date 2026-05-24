@@ -5,6 +5,11 @@ usage:
   const { left, top } = Hooks.usePosition(ref);
 */
 
+const canUseDOM = typeof window !== 'undefined';
+const useIsomorphicLayoutEffect = canUseDOM
+  ? React.useLayoutEffect
+  : React.useEffect;
+
 const getStyle = (el: any, styleName: string) => {
   const style: any = window.getComputedStyle(el);
   return style[styleName];
@@ -72,23 +77,21 @@ const getPosition = (el: any) => {
 };
 
 export const usePosition = (ref: any) => {
-  let { top, left } = getPosition(ref.current);
-  let [ElementPosition, setElementPosition] = React.useState({
-    top: top,
-    left: left,
-    // rtop:0,
-    // rleft:0,
-    // winX:0,
-    // winY:0
-  });
+  const [ElementPosition, setElementPosition] = React.useState(() =>
+    getPosition(ref.current),
+  );
 
   const handleChangePosition = () => {
-    if (ref && ref.current) {
+    if (canUseDOM && ref && ref.current) {
       setElementPosition(getPosition(ref.current));
     }
   };
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    if (!canUseDOM) {
+      return;
+    }
+
     handleChangePosition();
     window.addEventListener('resize', handleChangePosition);
 

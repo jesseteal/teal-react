@@ -1,7 +1,5 @@
-import Box from '@mui/material/Box';
+import { Box, InputBase, IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
 import Icon from '../atoms/Icon';
 
 export default function SimpleSearch({

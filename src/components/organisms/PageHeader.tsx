@@ -1,10 +1,13 @@
-import AppBar from '@mui/material/AppBar';
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Toolbar from '@mui/material/Toolbar';
-import { lightColor } from '../../layout/theme';
-import { ButtonGroup } from '@mui/material';
+import {
+  AppBar,
+  Button,
+  ButtonGroup,
+  Grid,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+
+const lightColor = 'rgba(255, 255, 255, 0.7)';
 
 interface PageHeaderButton {
   custom?: any; // React elements

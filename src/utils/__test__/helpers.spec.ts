@@ -6,7 +6,7 @@ import {
   isSet,
   zeroIsOk,
   searchObject,
-} from './helpers';
+} from '../helpers';
 
 describe('helpers', () => {
   it('isNumeric', () => {

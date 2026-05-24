@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import PageHeader, { PageHeaderProps } from './PageHeader';
 import PageTabs, { PageTabProps } from './PageTabs';
 import Loading from '../molecules/Loading';

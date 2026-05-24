@@ -1,4 +1,4 @@
-import Typography from '@mui/material/Typography';
+import { Typography } from '@mui/material';
 
 // variants: h1 - h6, subtitle1, subtitle2, body1, body2, button, caption, overline
 // colors: primary, secondary, textPrimary, textSecondary, error

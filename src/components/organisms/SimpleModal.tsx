@@ -1,4 +1,4 @@
-import Modal from '@mui/material/Modal';
+import { Modal } from '@mui/material';
 /*
 <SimpleModal
   open={open}

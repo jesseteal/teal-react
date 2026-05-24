@@ -1,8 +1,4 @@
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import CardActions from '@mui/material/CardActions';
-import Divider from '@mui/material/Divider';
+import { Box, Button, IconButton, CardActions, Divider } from '@mui/material';
 
 /*
 usage: include as child in <SimpleCard>

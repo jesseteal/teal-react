@@ -1,4 +1,4 @@
-import Grid from '@mui/material/Grid';
+import { Grid2 } from '@mui/material';
 
 /*
 usage:
@@ -39,18 +39,18 @@ interface SimpleGridProps {
 
 const SimpleGrid = ({ items, spacing = 3 }: SimpleGridProps) => {
   return (
-    <Grid container spacing={spacing}>
+    <Grid2 container spacing={spacing}>
       {items
         .filter((t: any) => !!t.content)
         .map((it: any, i: number) => {
-          const props = size_props(it.size || 12);
+          const size = size_props(it.size || 12);
           return (
-            <Grid key={`grid_item_${i}`} item {...props}>
+            <Grid2 key={`grid_item_${i}`} size={size}>
               {it.content}
-            </Grid>
+            </Grid2>
           );
         })}
-    </Grid>
+    </Grid2>
   );
 };
 

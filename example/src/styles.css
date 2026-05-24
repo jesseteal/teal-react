@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.example-tab {
+  background: #f5f7f8;
+  padding: 16px;
+}

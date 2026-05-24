@@ -1,9 +1,11 @@
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  IconButton,
+} from '@mui/material';
 import SimpleCardActions from '../molecules/SimpleCardActions';
 import SimpleTabs from './SimpleTabs';
 import Icon from '../atoms/Icon';

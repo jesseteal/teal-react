@@ -11,8 +11,10 @@ export interface APIClientOptions {
   isJson?: boolean;
 }
 
+export type RequestData = Record<string, any>;
+
 export interface RequestOptions {
-  data?: Record<string, any>;
+  data?: RequestData;
   headers?: Record<string, string>;
 }
 
@@ -27,8 +29,24 @@ class APIClient {
     this.isJson = options.isJson ?? true;
   }
 
-  async Get(endpoint: string, options?: RequestOptions) {
-    return await this.pull({
+  async Get<T = unknown>(endpoint: string, options?: RequestOptions) {
+    return this.get<T>(endpoint, options);
+  }
+
+  async Post<T = unknown>(endpoint: string, options?: RequestOptions) {
+    return this.post<T>(endpoint, options);
+  }
+
+  SetBasicAuthToken(token: string) {
+    this.setBasicAuthToken(token);
+  }
+
+  setBasicAuthToken(token: string) {
+    this.headers['Authorization'] = `Basic ${token}`;
+  }
+
+  async get<T = unknown>(endpoint: string, options?: RequestOptions) {
+    return this.request<T>({
       method: 'GET',
       endpoint,
       data: options?.data,
@@ -36,8 +54,8 @@ class APIClient {
     });
   }
 
-  async Post(endpoint: string, options?: RequestOptions) {
-    return await this.pull({
+  async post<T = unknown>(endpoint: string, options?: RequestOptions) {
+    return this.request<T>({
       method: 'POST',
       endpoint,
       data: options?.data,
@@ -45,11 +63,32 @@ class APIClient {
     });
   }
 
-  SetBasicAuthToken(token: string) {
-    this.headers['Authorization'] = `Basic ${token}`;
+  private buildUrl(endpoint: string, data?: RequestData) {
+    const url = new URL(endpoint, this.serverUrl);
+    if (data) {
+      for (const [key, value] of Object.entries(data)) {
+        if (value !== undefined && value !== null) {
+          url.searchParams.append(key, String(value));
+        }
+      }
+    }
+    return url.toString();
   }
 
-  private async pull({
+  private async parseResponse<T>(response: Response): Promise<T> {
+    if (response.ok === false) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    const contentType = response.headers?.get?.('content-type') || '';
+    if (!contentType || contentType.includes('application/json')) {
+      return response.json() as Promise<T>;
+    }
+
+    return response.text() as Promise<T>;
+  }
+
+  private async request<T = unknown>({
     method,
     endpoint,
     data,
@@ -57,12 +96,15 @@ class APIClient {
   }: {
     method: 'GET' | 'POST';
     endpoint: string;
-    data?: Record<string, any>;
+    data?: RequestData;
     headers?: Record<string, string>;
-  }) {
-    let body: any;
-    let _headers = { ...this.headers, ...headers };
-    let appendToUrl = endpoint;
+  }): Promise<T> {
+    let body: BodyInit | undefined;
+    const _headers = { ...this.headers, ...headers };
+    const url =
+      method === 'GET'
+        ? this.buildUrl(endpoint, data)
+        : this.buildUrl(endpoint);
 
     if (method === 'POST') {
       if (this.isJson) {
@@ -70,30 +112,20 @@ class APIClient {
         _headers['Content-Type'] = 'application/json';
       } else {
         body = new FormData();
-        for (const t in data) {
-          if (data.hasOwnProperty(t)) {
-            body.append(t, data[t]);
+        for (const [key, value] of Object.entries(data || {})) {
+          if (value !== undefined && value !== null) {
+            body.append(key, value);
           }
         }
       }
-    } else if (method === 'GET' && data) {
-      appendToUrl += '?';
-      const qs = [];
-      for (const t in data) {
-        if (data.hasOwnProperty(t)) {
-          qs.push(`${t}=${data[t]}`);
-        }
-      }
-      appendToUrl += qs.join('&');
     }
-    const fetch_url = this.serverUrl + appendToUrl;
-    return await fetch(fetch_url, {
+
+    const response = await fetch(url, {
       method,
       headers: _headers,
       body,
-    })
-      .then((r) => r.json?.() || r)
-      .catch((apiError) => console.error({ apiError }));
+    });
+    return this.parseResponse<T>(response);
   }
 }
 

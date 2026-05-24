@@ -1,4 +1,4 @@
-import APIClient from './APIClient';
+import APIClient from '../APIClient';
 
 describe('APIClient', () => {
   const serverUrl = 'https://api.example.com';

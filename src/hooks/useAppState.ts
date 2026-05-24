@@ -29,7 +29,7 @@ export const useAppState = (contextKey: string, initialState?: any) => {
       Object.assign({}, prevState, {
         [contextKey]:
           typeof nextState === 'function' ? nextState(prevState) : nextState,
-      })
+      }),
     );
 
   React.useLayoutEffect(() => {

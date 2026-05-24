@@ -1,10 +1,5 @@
-import AppBar from '@mui/material/AppBar';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import { AppBar, Tabs, Tab } from '@mui/material';
 
-// interface Tab {
-//   label: string;
-// }
 export interface PageTabProps {
   tabs: string[];
   tabIndex: number;

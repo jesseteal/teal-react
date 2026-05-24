@@ -19,6 +19,8 @@
   "include": ["./jest-setup.ts", "./src", "./index.ts", "__mocks__"],
   "exclude": [
     "./src/**/*.spec.ts",
+    "./src/**/*.spec.tsx",
+    "./src/**/__test__/**/*",
     "./dist/**/*",
     "./example/**/*",
     "__mocks__/**/*"
