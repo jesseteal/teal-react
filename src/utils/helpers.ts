@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 /**
  * Filters an array of objects by searching for a term within specified paths.
  *
@@ -55,7 +53,7 @@ export function searchObject(
   }
   const termsList = terms.toLowerCase().split(' ');
   return paths.some((path) => {
-    const value = _.get(obj, path, '').toString().toLowerCase();
+    const value = get(obj, path, '').toString().toLowerCase();
     return termsList.every((term) => value.includes(term));
   });
 }
@@ -106,4 +104,51 @@ export function isNullOrEmpty(val: any): boolean {
     return Object.keys(val).length === 0;
   }
   return false;
+}
+
+export function get<TDefault = any>(
+  obj: any,
+  path: string | Array<string | number>,
+  defaultValue?: TDefault,
+): any | TDefault {
+  const parts = Array.isArray(path)
+    ? path
+    : path
+        .replace(/\[(\w+)\]/g, '.$1')
+        .replace(/^\./, '')
+        .split('.');
+
+  const value = parts.reduce((result, key) => {
+    if (result === null || result === undefined || key === '') {
+      return undefined;
+    }
+    return result[key];
+  }, obj);
+
+  return value === undefined ? defaultValue : value;
+}
+
+export function find<T>(
+  array: T[],
+  predicate: Partial<T> | ((item: T) => boolean),
+): T | undefined {
+  if (typeof predicate === 'function') {
+    return array.find(predicate);
+  }
+
+  return array.find((item) =>
+    Object.entries(predicate).every(([key, value]) => get(item, key) === value),
+  );
+}
+
+export function omitBy<T extends Record<string, any>>(
+  obj: T,
+  predicate: (value: T[keyof T], key: string) => boolean,
+): Partial<T> {
+  return Object.entries(obj || {}).reduce<Partial<T>>((result, [key, value]) => {
+    if (!predicate(value, key)) {
+      result[key as keyof T] = value;
+    }
+    return result;
+  }, {});
 }

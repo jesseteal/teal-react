@@ -1,7 +1,6 @@
 // @ts-ignore
 import React from 'react';
-// @ts-ignore
-import _ from 'lodash';
+import { omitBy } from '../utils/helpers';
 
 // USAGE:
 // Hooks.useTrackObject('my var', XXX)
@@ -9,7 +8,7 @@ import _ from 'lodash';
 export const useTrackObject = (name: string, props: any) => {
   const [oldProps, setOldProps] = React.useState(props);
   React.useEffect(() => {
-    const diff = _.omitBy(props, (v: any, k: any) => (oldProps || {})[k] === v);
+    const diff = omitBy(props, (v: any, k: any) => (oldProps || {})[k] === v);
     if (Object.keys(diff).length > 0) {
       console.log(`[${name}] updated`, diff);
     }
@@ -20,7 +19,7 @@ export const useTrackObject = (name: string, props: any) => {
 export const useOnTrackObjectChange = (obj: any, callback: any) => {
   const [old, set_old] = React.useState(obj);
   React.useEffect(() => {
-    const diff = _.omitBy(obj, (v: any, k: any) => (old || {})[k] === v);
+    const diff = omitBy(obj, (v: any, k: any) => (old || {})[k] === v);
     if (Object.keys(diff).length > 0) {
       // console.log('[Object Change]', diff);
       callback(diff);

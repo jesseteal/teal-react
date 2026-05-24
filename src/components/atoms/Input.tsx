@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {
   Checkbox,
   InputAdornment,
@@ -9,7 +8,7 @@ import {
   FormControlLabel,
   FormHelperText,
 } from '@mui/material';
-import { isNumeric, zeroIsOk } from '../../utils/helpers';
+import { find, get, isNumeric, zeroIsOk } from '../../utils/helpers';
 import Icon from './Icon';
 import { formatPhone } from '../../utils/format';
 
@@ -58,7 +57,7 @@ const Input = (props: any) => {
       }
     : null;
   // const options = field.lookup ? lookups.filter(l => l.type === field.lookup).map(l => ({ value:l.id, label:l.name, group: l.group })) : field.options;
-  const selectedValue = zeroIsOk(_.get(values, field.name));
+  const selectedValue = zeroIsOk(get(values, field.name));
   const clear =
     field.clearable && selectedValue !== ''
       ? {
@@ -165,7 +164,7 @@ const Input = (props: any) => {
               <Checkbox
                 color={edit ? 'primary' : 'default'}
                 disabled={disabled || field.disabled}
-                checked={!!_.get(values, field.name)}
+                checked={!!get(values, field.name)}
                 onChange={(e) =>
                   edit &&
                   setValues({ [field.name]: e.target.checked ? 1 : null })
@@ -217,7 +216,7 @@ const Input = (props: any) => {
         }
         setValues({ [field.name]: e.target.value });
         if (field.options) {
-          const t = _.find(field.options, { value: e.target.value });
+          const t = find(field.options, { value: e.target.value });
           field.onChange && field.onChange(t);
         }
       }}

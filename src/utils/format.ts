@@ -1,4 +1,6 @@
-import accounting from 'accounting';
+import { formatNumber } from './numbers';
+
+export { formatMoney, formatNumber } from './numbers';
 
 /**
  * Capitalizes the first letter of a string.
@@ -25,29 +27,6 @@ export const padNumber = (
 ): string => {
   const s = num.toString();
   return s.padStart(maxwidth, char);
-};
-
-/**
- * Formats a number using accounting.js library
- * @param num - The number to format
- * @param precision - The number of decimal places to include
- * @param showZero - Whether to show zero values
- * @returns The formatted number as a string, or null if num is 0 and showZero is false
- */
-export const formatNumber = (
-  num: number | string | null | undefined,
-  precision = 0,
-  showZero = true,
-): string | null => {
-  const number = Number(num ?? 0);
-  if (number === 0 && !showZero) {
-    return null;
-  }
-  return accounting.formatNumber(number, precision);
-};
-
-export const formatMoney = (amount: number | string) => {
-  return accounting.formatMoney(Number(amount));
 };
 
 /**

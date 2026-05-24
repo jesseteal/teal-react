@@ -1,5 +1,4 @@
 import React from 'react';
-import { sortBy, reverse } from 'lodash';
 import {
   Box,
   Card,
@@ -21,6 +20,7 @@ import SimpleCardActions from '../molecules/SimpleCardActions';
 import SimpleDeleteConfirm from './SimpleDeleteConfirm';
 import Icon from '../atoms/Icon';
 import SimpleSearch from './SimpleSearch';
+import { get } from '../../utils/helpers';
 // import K from 'Constants';
 /*
 Usage Example
@@ -65,9 +65,27 @@ const SimpleTable = (props: any) => {
 
   if (orderBy > -1 && columns[orderBy].sort !== false) {
     let { sort, cell, header } = columns[orderBy];
-    data = sortBy(data, sort || cell || header.toLowerCase());
+    const sortPath = sort || cell || header.toLowerCase();
+    data = [...data].sort((a: any, b: any) => {
+      const aValue =
+        typeof sortPath === 'function' ? sortPath(a) : get(a, sortPath);
+      const bValue =
+        typeof sortPath === 'function' ? sortPath(b) : get(b, sortPath);
+
+      if (aValue === bValue) {
+        return 0;
+      }
+      if (aValue === null || aValue === undefined) {
+        return 1;
+      }
+      if (bValue === null || bValue === undefined) {
+        return -1;
+      }
+
+      return aValue > bValue ? 1 : -1;
+    });
     if (order !== 'asc') {
-      data = reverse(data);
+      data = data.reverse();
     }
   }
   const start = page * rowsPerPage;

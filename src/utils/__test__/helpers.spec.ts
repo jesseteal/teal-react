@@ -1,8 +1,11 @@
 import {
   filterObjectArray,
+  find,
+  get,
   hasDiff,
   isNullOrEmpty,
   isNumeric,
+  omitBy,
   isSet,
   zeroIsOk,
   searchObject,
@@ -235,5 +238,34 @@ describe('isNullOrEmpty', () => {
     expect(isNullOrEmpty({ foo: 'bar' })).toBe(false);
     expect(isNullOrEmpty(0)).toBe(false);
     expect(isNullOrEmpty(false)).toBe(false);
+  });
+});
+
+describe('lodash replacements', () => {
+  it('gets nested values from dot and bracket paths', () => {
+    const obj = { user: { names: ['Jesse'] } };
+
+    expect(get(obj, 'user.names[0]')).toBe('Jesse');
+    expect(get(obj, ['user', 'names', 0])).toBe('Jesse');
+    expect(get(obj, 'user.email', '')).toBe('');
+  });
+
+  it('finds items using object and function predicates', () => {
+    const list = [
+      { id: 1, meta: { active: false } },
+      { id: 2, meta: { active: true } },
+    ];
+
+    expect(find(list, { id: 2 })).toEqual({ id: 2, meta: { active: true } });
+    expect(find(list, (item) => item.meta.active)).toEqual({
+      id: 2,
+      meta: { active: true },
+    });
+  });
+
+  it('omits object entries that match a predicate', () => {
+    expect(omitBy({ a: 1, b: 2, c: 3 }, (value) => value > 1)).toEqual({
+      a: 1,
+    });
   });
 });
