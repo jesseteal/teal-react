@@ -6,6 +6,8 @@ const {
   FileUploadButton,
   Icon,
   Input,
+  DatePicker,
+  DateTimePicker,
   Loading,
   MaxBox,
   PageContent,
@@ -32,6 +34,8 @@ describe('components index', () => {
   it('exports the component surface', () => {
     expect(Icon.Add).toBeDefined();
     expect(Input).toEqual(expect.any(Function));
+    expect(DatePicker).toEqual(expect.any(Function));
+    expect(DateTimePicker).toEqual(expect.any(Function));
     expect(SimpleCard).toEqual(expect.any(Function));
     expect(SimpleTable).toEqual(expect.any(Function));
   });

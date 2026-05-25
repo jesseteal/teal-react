@@ -152,10 +152,7 @@ export default function App() {
                               {Typo.body(
                                 'Use these examples to check component behavior while changing the library.',
                               )}
-                              <Stack
-                                direction="row"
-                                spacing={1}
-                                flexWrap="wrap">
+                              <Stack direction="row" spacing={1}>
                                 <Chip label="MUI" />
                                 <Chip color="primary" label="Library source" />
                                 <Chip color="secondary" label="Live reload" />
@@ -292,20 +289,35 @@ export default function App() {
                     save={({ merged }: any) =>
                       alert(`Saved ${JSON.stringify(merged)}`)
                     }
-                    clearable
                     resetOnSave
                     fields={[
                       {
                         name: 'name',
                         label: 'Name',
-                        size: 6,
+                        size: 3,
                         validate: { required: true },
                         clearable: true,
                       },
                       {
+                        name: 'dob',
+                        label: 'Date of Birth',
+                        size: 3,
+                        validate: { required: true },
+                        clearable: () => {},
+                        date: true,
+                      },
+                      {
+                        name: 'dtt',
+                        label: 'Date and Time of Death',
+                        size: 3,
+                        validate: { required: true },
+                        clearable: () => {},
+                        datetime: true,
+                      },
+                      {
                         name: 'priority',
                         label: 'Priority',
-                        size: 6,
+                        size: 3,
                         options: [
                           { value: 'low', label: 'Low' },
                           { value: 'medium', label: 'Medium' },

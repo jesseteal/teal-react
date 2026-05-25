@@ -1,6 +1,7 @@
 import moment from 'moment';
 export const DB_DATE = 'YYYY-MM-DD';
-export const DB_DATETIME = "YYYY-MM-DD'T'HH:mm:ssxxx";
+export const DB_DATETIME = "YYYY-MM-DD'T'HH:mm:ss";
+export const FULL_DATETIME = 'YYYY-MM-DD HH:mm:ss';
 export const FORMAT_FULLDATE = 'MMM D, YYYY h:mm a';
 const STANDARD_FORMAT = 'MM/DD/YYYY';
 

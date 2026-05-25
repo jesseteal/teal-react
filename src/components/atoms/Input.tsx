@@ -11,6 +11,8 @@ import {
 import { find, get, isNumeric, zeroIsOk } from '../../utils/helpers';
 import Icon from './Icon';
 import { formatPhone } from '../../utils/format';
+import DatePicker from './DatePicker';
+import DateTimePicker from './DateTimePicker';
 
 /*
 usage:
@@ -73,85 +75,49 @@ const Input = (props: any) => {
       : null;
 
   if (field.date) {
-    return null;
-    //   return (
-    //     <LocalizationProvider dateAdapter={AdapterMoment}>
-    //       {edit ? (
-    //         <DatePicker
-    //           // disableToolbar
-    //           // fullWidth
-    //           // inputVariant={variant}
-    //           // variant="inline"
-    //           // autoOk={true}
-    //           disabled={disabled || field.disabled}
-    //           label={field.label}
-    //           minDate={DateUtil.toDate(field.minDate)}
-    //           maxDate={DateUtil.toDate(field.maxDate) || undefined}
-    //           // required={edit && field.validate && field.validate.required}
-    //           // error={errors && !!errors[field.name]}
-    //           // helperText={(errors && errors[field.name]) || field.helperText}
-    //           // InputProps={{
-    //           //   ...(prepend || append || clear),
-    //           //   readOnly: !!field.readOnly || !edit,
-    //           // }}
-    //           renderInput={(params: TextFieldProps) => (
-    //             <TextField
-    //             {...params}
-    //             error={errors && !!errors[field.name]}
-    //             required={edit && field.validate && field.validate.required}
-    //             // helperText={params?.inputProps?.placeholder}
-    //             helperText={(errors && errors[field.name]) || field.helperText}
-    //             />
-    //           )}
-    //           // format="MM/dd/yyyy"
-    //           // value={Utils.date.format(Utils.resolve(values, field.name)) || null}
-    //           value={values[field.name]}
-    //           onChange={(date, formatted) => {
-    //             setValues({
-    //               [field.name]: DateUtil.format(date, DateUtil.DB_DATE),
-    //             });
-    //           }}
-    //           // onKeyPress={(ev) => {
-    //           //   if (ev.key === 'Enter') {
-    //           //     onEnter && onEnter()
-    //           //     ev.preventDefault()
-    //           //   }
-    //           // }}
-    //         />
-    //       ) : (
-    //         <TextField
-    //           fullWidth
-    //           label={field.label}
-    //           value={DateUtil.format(_.get(values, field.name)) || null}
-    //           InputProps={{ readOnly: true }}
-    //           variant={variant}
-    //         />
-    //       )}
-    //     </LocalizationProvider>
-    //   );
-    //   // } else if (field.time) {
-    //   //   // deprecated?
-    //   //   return (
-    //   //     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-    //   //       <KeyboardTimePicker
-    //   //         fullWidth
-    //   //         disabled={disabled || field.disabled}
-    //   //         margin="normal"
-    //   //         label={field.label}
-    //   //         variant={variant}
-    //   //         value={Utils.resolve(values, field.name)}
-    //   //         onKeyPress={(ev) => {
-    //   //           if (ev.key === 'Enter') {
-    //   //             onEnter && onEnter()
-    //   //             ev.preventDefault()
-    //   //           }
-    //   //         }}
-    //   //         onChange={(date, formatted) => {
-    //   //           setValues({ [field.name]: date ? date.format('HH:mm') : null })
-    //   //         }}
-    //   //       />
-    //   //     </MuiPickersUtilsProvider>
-    //   //   )
+    return (
+      <DatePicker
+        autoFocus={autoFocus === true}
+        disabled={disabled || field.disabled}
+        required={edit && field.validate && field.validate.required}
+        name={field.name}
+        label={field.label}
+        value={selectedValue}
+        clearable={field.clearable}
+        // variant={variant}
+        readOnly={!!field.readOnly || !edit}
+        className={field.className}
+        // style={field.style}
+        onChange={(formattedDate) => {
+          setValues({ [field.name]: formattedDate });
+        }}
+        fullWidth={field.fullWidth ?? true}
+        error={errors && !!errors[field.name]}
+        helperText={(errors && errors[field.name]) || field.helperText}
+      />
+    );
+  } else if (field.datetime) {
+    return (
+      <DateTimePicker
+        autoFocus={autoFocus === true}
+        disabled={disabled || field.disabled}
+        required={edit && field.validate && field.validate.required}
+        name={field.name}
+        label={field.label}
+        value={selectedValue}
+        clearable={field.clearable}
+        // variant={variant}
+        readOnly={!!field.readOnly || !edit}
+        className={field.className}
+        // style={field.style}
+        onChange={(formattedDate) => {
+          setValues({ [field.name]: formattedDate });
+        }}
+        fullWidth={field.fullWidth ?? true}
+        error={errors && !!errors[field.name]}
+        helperText={(errors && errors[field.name]) || field.helperText}
+      />
+    );
   } else if (field.bool) {
     return (
       <>
