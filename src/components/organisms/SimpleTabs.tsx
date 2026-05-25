@@ -17,6 +17,9 @@ const SimpleTabs = ({ tabs, activeTab = 0, onChange }: any) => {
   React.useEffect(() => {
     setTab(Number(activeTab)); // update state when params change
   }, [activeTab]);
+
+  const visibleTabs = tabs.filter((t: any) => !t.role || hasRole(t.role));
+
   return (
     <AppBar position="static" color="default">
       <Tabs
@@ -26,12 +29,11 @@ const SimpleTabs = ({ tabs, activeTab = 0, onChange }: any) => {
           onChange && onChange(i);
         }}
         textColor="primary">
-        {tabs.map((t: any, i: number) => {
-          if (t.role && !hasRole(t.role)) return null;
+        {visibleTabs.map((t: any, i: number) => {
           return <Tab label={t.label} key={`simpletab${i}`} />;
         })}
       </Tabs>
-      {tabs[tab].content}
+      {visibleTabs[tab]?.content}
     </AppBar>
   );
 };

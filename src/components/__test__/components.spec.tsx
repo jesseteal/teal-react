@@ -156,6 +156,11 @@ describe('organisms', () => {
         <SimpleTabs
           tabs={[
             { label: 'Details', content: <div>Details content</div> },
+            {
+              label: 'Admin',
+              role: 'admin',
+              content: <div>Admin content</div>,
+            },
             { label: 'History', content: <div>History content</div> },
           ]}
         />
@@ -166,15 +171,23 @@ describe('organisms', () => {
     expect(screen.getByText('Grid item')).toBeInTheDocument();
     expect(screen.getByText('Profile')).toBeInTheDocument();
     expect(screen.getByText('Details content')).toBeInTheDocument();
+    expect(
+      screen.queryByRole('tab', { name: 'Admin' }),
+    ).not.toBeInTheDocument();
   });
 
   it('filters and renders SimpleTable rows', () => {
     const onFilter = jest.fn();
+    const rows = Array.from({ length: 12 }, (_, i) => ({
+      id: i + 1,
+      name: i === 0 ? 'Ada' : `Person ${i + 1}`,
+      role: i === 0 ? 'Engineer' : 'Member',
+    }));
 
     render(
       <SimpleTable
         header="People"
-        data={[{ id: 1, name: 'Ada', role: 'Engineer' }]}
+        data={rows}
         onFilter={onFilter}
         columns={[
           { header: 'Name', cell: 'name' },
@@ -189,6 +202,7 @@ describe('organisms', () => {
 
     expect(screen.getByText('Ada')).toBeInTheDocument();
     expect(screen.getByText('Engineer')).toBeInTheDocument();
+    expect(screen.getByText('1-10 of 12')).toBeInTheDocument();
     expect(onFilter).toHaveBeenCalledWith('ada');
   });
 

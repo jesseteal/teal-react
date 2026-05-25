@@ -280,11 +280,14 @@ const SimpleTable = (props: any) => {
             <TablePagination
               component="div"
               count={data.length}
+              labelDisplayedRows={({ from, to, count }) =>
+                `${from}-${to} of ${count !== -1 ? count : `more than ${to}`}`
+              }
               onPageChange={(event, page) => {
                 setPage(page);
               }}
               onRowsPerPageChange={(event) => {
-                setRowsPerPage(event.target.value);
+                setRowsPerPage(Number(event.target.value));
               }}
               page={page}
               rowsPerPage={rowsPerPage}

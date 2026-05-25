@@ -32,8 +32,8 @@ export default function PageHeader({ title, buttons }: PageHeaderProps) {
       elevation={0}
       sx={{ zIndex: 0 }}>
       <Toolbar>
-        <Grid container alignItems="center" spacing={1}>
-          <Grid item xs>
+        <Grid container spacing={1} sx={{ alignItems: 'center' }}>
+          <Grid size="grow">
             <Typography color="inherit" variant="h5" component="h1">
               {title}
             </Typography>
@@ -41,7 +41,7 @@ export default function PageHeader({ title, buttons }: PageHeaderProps) {
           {buttons?.map((button, i) => {
             if (button.group) {
               return (
-                <Grid item key={`group${i}`}>
+                <Grid key={`group${i}`}>
                   <ButtonGroup variant="outlined">
                     {button.group?.map((gbutton, j) => {
                       return (
@@ -70,7 +70,7 @@ export default function PageHeader({ title, buttons }: PageHeaderProps) {
               return button.custom;
             }
             return (
-              <Grid item key={`btn${i}`}>
+              <Grid key={`btn${i}`}>
                 <Button
                   sx={{
                     borderColor: lightColor,
@@ -86,7 +86,7 @@ export default function PageHeader({ title, buttons }: PageHeaderProps) {
             );
           })}
 
-          {/* <Grid item>
+          {/* <Grid>
             <Tooltip title="Help">
               <IconButton color="inherit">
                 <HelpIcon />

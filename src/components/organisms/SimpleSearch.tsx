@@ -22,7 +22,7 @@ export default function SimpleSearch({
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Filter results"
-        inputProps={{ 'aria-label': 'filter results' }}
+        slotProps={{ input: { 'aria-label': 'filter results' } }}
         value={term}
         onChange={(e: any) => setTerm(e.target.value)}
       />

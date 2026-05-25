@@ -225,17 +225,19 @@ const Input = (props: any) => {
       multiline={!!field.multiline}
       maxRows={field.multiline || 6}
       minRows={field.multiline || 1}
-      InputProps={{
-        ...(prepend || append || clear),
-        readOnly: !!field.readOnly || !edit,
-      }}
       error={errors && !!errors[field.name]}
       helperText={(errors && errors[field.name]) || field.helperText}
-      onKeyPress={(ev) => {
+      onKeyDown={(ev) => {
         if (ev.key === 'Enter' && !field.multiline) {
           onEnter && onEnter();
           ev.preventDefault();
         }
+      }}
+      slotProps={{
+        input: {
+          ...(prepend || append || clear),
+          readOnly: !!field.readOnly || !edit,
+        },
       }}>
       {field.options &&
         field.options.map((o: any, i: number) => {

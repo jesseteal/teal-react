@@ -49,7 +49,7 @@ const SimpleCardActions = ({
               </IconButton>
             );
           })}
-        <Box flexGrow={1}>{children}</Box>
+        <Box sx={{ flexGrow: 1 }}>{children}</Box>
         {actionsRight &&
           actionsRight.map((t: any, i: number) => {
             return t.label ? (

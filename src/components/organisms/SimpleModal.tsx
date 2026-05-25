@@ -1,4 +1,5 @@
 import { Modal } from '@mui/material';
+import type { ModalProps } from '@mui/material/Modal';
 /*
 <SimpleModal
   open={open}
@@ -18,6 +19,11 @@ export default function SimpleModal({
   onClose,
   size = 'lg',
 }: SimpleModalProps) {
+  const handleClose: ModalProps['onClose'] = (_event, reason) => {
+    void reason;
+    onClose?.();
+  };
+
   let flex = 0.15;
   if (size === 'sm') {
     flex = 0.75;
@@ -25,7 +31,7 @@ export default function SimpleModal({
     flex = 0.5;
   }
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={handleClose}>
       <div
         style={{
           display: 'flex',

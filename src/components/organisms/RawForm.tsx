@@ -22,7 +22,9 @@ const RawForm = (props: any) => {
       <Grid container spacing={6}>
         {col_array.map((col, i) => {
           return (
-            <Grid item xs={12} sm={col.column.size || 12} key={`col_grid_${i}`}>
+            <Grid
+              size={{ xs: 12, sm: col.column.size || 12 }}
+              key={`col_grid_${i}`}>
               {field_grid(col.column.fields)}
             </Grid>
           );
@@ -40,27 +42,29 @@ const RawForm = (props: any) => {
           )
           .map((f: any, i: number) => {
             if (f.spacer) {
-              return <Grid item xs={12} sm={f.spacer} key={`spacer${i}`} />;
+              return (
+                <Grid size={{ xs: 12, sm: f.spacer }} key={`spacer${i}`} />
+              );
             }
             if (f.children) {
               return (
-                <Grid item xs={12} sm={f.size} key={`child${i}`}>
+                <Grid size={{ xs: 12, sm: f.size }} key={`child${i}`}>
                   {f.children}
                 </Grid>
               );
             }
             if (f.header) {
               return (
-                <Grid item xs={12} sm={f.size} key={`header${i}`}>
+                <Grid size={{ xs: 12, sm: f.size }} key={`header${i}`}>
                   {Typo.header(f.header)}
                 </Grid>
               );
             }
             if (f.hide && f.hide(values)) {
-              return <Grid item xs={12} sm={f.size || 12} key={f.name} />;
+              return <Grid size={{ xs: 12, sm: f.size || 12 }} key={f.name} />;
             }
             return (
-              <Grid item xs={12} sm={f.size || 12} key={f.name}>
+              <Grid size={{ xs: 12, sm: f.size || 12 }} key={f.name}>
                 <Input
                   autoFocus={useAutoFocus && i === 0 && !values.id}
                   edit={edit}

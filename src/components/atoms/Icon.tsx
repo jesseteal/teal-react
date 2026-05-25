@@ -14,7 +14,7 @@ import {
   Edit,
   Email,
   Help,
-  HelpOutline,
+  HelpOutlined as HelpOutline,
   Key as Secret,
   Login,
   Logout,
@@ -29,7 +29,7 @@ import {
   Search,
   Settings,
   SettingsOutlined as SettingsOutline,
-  AddCircleOutline as Add,
+  AddCircleOutlined as Add,
 } from '@mui/icons-material';
 
 const Icon = {

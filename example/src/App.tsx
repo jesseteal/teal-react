@@ -25,6 +25,13 @@ const people = [
   { id: 2, name: 'Noah Patel', role: 'Engineer', status: 'Active' },
   { id: 3, name: 'Iris Lane', role: 'Researcher', status: 'Paused' },
   { id: 4, name: 'Sam Rivera', role: 'Support', status: 'Active' },
+  { id: 5, name: 'Sam Rivera', role: 'Support', status: 'Active' },
+  { id: 6, name: 'Sam Rivera', role: 'Support', status: 'Active' },
+  { id: 7, name: 'Sam Rivera', role: 'Support', status: 'Active' },
+  { id: 8, name: 'Sam Rivera', role: 'Support', status: 'Active' },
+  { id: 9, name: 'Sam Rivera', role: 'Support', status: 'Active' },
+  { id: 10, name: 'Sam Rivera', role: 'Support', status: 'Active' },
+  { id: 11, name: 'Sam Rivera', role: 'Support', status: 'Active' },
 ];
 
 export default function App() {
@@ -163,7 +170,7 @@ export default function App() {
                 <Stack spacing={2} className="example-tab">
                   <SimpleCard header="Input">
                     <Grid container spacing={2}>
-                      <Grid item xs={12} md={6}>
+                      <Grid size={{ xs: 12, md: 6 }}>
                         <Input
                           field={{
                             name: 'email',
@@ -177,7 +184,7 @@ export default function App() {
                           }
                         />
                       </Grid>
-                      <Grid item xs={12} md={3}>
+                      <Grid size={{ xs: 12, md: 3 }}>
                         <Input
                           field={{
                             name: 'plan',
@@ -195,7 +202,7 @@ export default function App() {
                           }
                         />
                       </Grid>
-                      <Grid item xs={12} md={3}>
+                      <Grid size={{ xs: 12, md: 3 }}>
                         <Input
                           field={{
                             name: 'seats',
@@ -209,7 +216,7 @@ export default function App() {
                           }
                         />
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid size={12}>
                         <Input
                           field={{
                             name: 'active',
