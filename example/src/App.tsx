@@ -1,12 +1,13 @@
 import { useMemo, useState } from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Switch from '@mui/material/Switch';
-import Typography from '@mui/material/Typography';
+import {
+  Box,
+  Chip,
+  Divider,
+  Grid,
+  Stack,
+  Switch,
+  Typography,
+} from '@jesseteal/teal-react/mui';
 import {
   Icon,
   Input,

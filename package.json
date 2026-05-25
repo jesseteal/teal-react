@@ -25,6 +25,10 @@
       "types": "./dist/hooks/index.d.ts",
       "import": "./dist/hooks/index.js"
     },
+    "./mui": {
+      "types": "./dist/mui/index.d.ts",
+      "import": "./dist/mui/index.js"
+    },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.js"

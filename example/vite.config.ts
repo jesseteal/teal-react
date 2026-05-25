@@ -7,6 +7,9 @@ export default defineConfig({
   root: fileURLToPath(new URL('.', import.meta.url)),
   resolve: {
     alias: {
+      '@jesseteal/teal-react/mui': fileURLToPath(
+        new URL('../src/mui/index.ts', import.meta.url),
+      ),
       '@jesseteal/teal-react': fileURLToPath(
         new URL('../src/index.ts', import.meta.url),
       ),
