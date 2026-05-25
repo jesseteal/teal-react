@@ -292,6 +292,7 @@ export default function App() {
                     save={({ merged }: any) =>
                       alert(`Saved ${JSON.stringify(merged)}`)
                     }
+                    clearable
                     resetOnSave
                     fields={[
                       {
@@ -299,6 +300,7 @@ export default function App() {
                         label: 'Name',
                         size: 6,
                         validate: { required: true },
+                        clearable: true,
                       },
                       {
                         name: 'priority',
