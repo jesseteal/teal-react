@@ -1,6 +1,6 @@
 {
   "name": "@jesseteal/teal-react",
-  "version": "3.0.0",
+  "version": "3.0.0-a",
   "description": "A bundle of reusable React files for re-use in my projects.",
   "type": "module",
   "main": "dist/index.js",
