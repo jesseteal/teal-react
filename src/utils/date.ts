@@ -9,6 +9,10 @@ export function toDate(dateValue: any) {
   return moment(dateValue).toDate();
 }
 
+export function toMoment(dateValue?: any) {
+  return moment(dateValue);
+}
+
 /**
   Converts the given number of seconds into a human-readable time format
   @param seconds - The number of seconds to be converted
@@ -82,6 +86,7 @@ export const dateUtils = {
   format: formatDate,
   formatUtc,
   toDate,
+  toMoment,
   now,
   ago,
   before,
