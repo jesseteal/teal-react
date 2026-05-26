@@ -1,4 +1,4 @@
-import { validate_fields } from '../validate';
+import { validate_fields } from '../validate.js';
 
 const fields = [
   {

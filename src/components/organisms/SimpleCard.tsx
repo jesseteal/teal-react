@@ -6,9 +6,9 @@ import {
   Divider,
   IconButton,
 } from '@mui/material';
-import SimpleCardActions from '../molecules/SimpleCardActions';
-import SimpleTabs from './SimpleTabs';
-import Icon from '../atoms/Icon';
+import SimpleCardActions from '../molecules/SimpleCardActions.js';
+import SimpleTabs from './SimpleTabs.js';
+import Icon from '../atoms/Icon.js';
 
 /*
 usage:

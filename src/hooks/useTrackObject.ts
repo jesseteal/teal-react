@@ -1,6 +1,6 @@
 // @ts-ignore
 import React from 'react';
-import { omitBy } from '../utils/helpers';
+import { omitBy } from '../utils/helpers.js';
 
 // USAGE:
 // Hooks.useTrackObject('my var', XXX)

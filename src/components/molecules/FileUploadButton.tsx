@@ -1,8 +1,8 @@
 import { IconButton } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-// import Api from '../../utils/api';
-import Icon from '../atoms/Icon';
-// import APIClient from '../../utils/APIClient';
+// import Api from '../../utils/api.js';
+import Icon from '../atoms/Icon.js';
+// import APIClient from '../../utils/APIClient.js';
 
 interface FileUploadButtonProps {
   className?: string;

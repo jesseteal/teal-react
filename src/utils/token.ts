@@ -1,7 +1,13 @@
-import jwtDecode from 'jwt-decode';
+import * as jwtDecodeModule from 'jwt-decode';
+import type { JwtDecodeOptions } from 'jwt-decode';
 import { useCallback, useMemo } from 'react';
-import { useAppState } from '../hooks/useAppState';
-import { isNullOrEmpty } from './helpers';
+import { useAppState } from '../hooks/useAppState.js';
+import { isNullOrEmpty } from './helpers.js';
+
+type JwtDecode = <T = unknown>(token: string, options?: JwtDecodeOptions) => T;
+
+const jwtDecode = ((jwtDecodeModule as unknown as { default?: JwtDecode })
+  .default ?? jwtDecodeModule) as unknown as JwtDecode;
 
 const token_key =
   (typeof process !== 'undefined' && process.env?.TOKEN_NAME) ||

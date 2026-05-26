@@ -1,4 +1,4 @@
-import Utils, * as utils from '../index';
+import Utils, * as utils from '../index.js';
 
 describe('utils index', () => {
   it('exports utility modules and default Utils collection', () => {

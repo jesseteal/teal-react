@@ -1,5 +1,5 @@
 import React from 'react';
-// import { GContext } from '../components/ContextProvider';
+// import { GContext } from '../components/ContextProvider.js';
 // SETUP:
 // in index.js
 // import { ContextProvider } from '@jesseteal/teal-react';

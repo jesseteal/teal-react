@@ -16,11 +16,11 @@ import {
   TableSortLabel,
 } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import SimpleCardActions from '../molecules/SimpleCardActions';
-import SimpleDeleteConfirm from './SimpleDeleteConfirm';
-import Icon from '../atoms/Icon';
-import SimpleSearch from './SimpleSearch';
-import { get } from '../../utils/helpers';
+import SimpleCardActions from '../molecules/SimpleCardActions.js';
+import SimpleDeleteConfirm from './SimpleDeleteConfirm.js';
+import Icon from '../atoms/Icon.js';
+import SimpleSearch from './SimpleSearch.js';
+import { get } from '../../utils/helpers.js';
 // import K from 'Constants';
 /*
 Usage Example

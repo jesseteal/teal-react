@@ -1,4 +1,4 @@
-import { saveToken, onTokenChange } from '../token';
+import { saveToken, onTokenChange } from '../token.js';
 
 const localStorageMock = { setItem: jest.fn(), removeItem: jest.fn() };
 

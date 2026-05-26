@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
-import Typo from '../atoms/Typo';
-import Input from '../atoms/Input';
+import Typo from '../atoms/Typo.js';
+import Input from '../atoms/Input.js';
 
 /*
 usage:

@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppBar, Tab, Tabs } from '@mui/material';
-import { hasRole } from '../../utils/token';
+import { hasRole } from '../../utils/token.js';
 /* usage
 <SimpleTabs
   tabs={[

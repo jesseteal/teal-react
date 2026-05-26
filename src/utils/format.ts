@@ -1,6 +1,6 @@
-import { formatNumber } from './numbers';
+import { formatNumber } from './numbers.js';
 
-export { formatMoney, formatNumber } from './numbers';
+export { formatMoney, formatNumber } from './numbers.js';
 
 /**
  * Capitalizes the first letter of a string.

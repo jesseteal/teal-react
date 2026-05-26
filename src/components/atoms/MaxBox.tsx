@@ -1,6 +1,6 @@
 import React from 'react';
-import { usePosition } from '../../hooks/usePosition';
-import { useWindowSize } from '../../hooks/useWindowSize';
+import { usePosition } from '../../hooks/usePosition.js';
+import { useWindowSize } from '../../hooks/useWindowSize.js';
 
 /*
   Displays as full height block if on initial screen

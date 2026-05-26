@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
-import PageHeader, { PageHeaderProps } from './PageHeader';
-import PageTabs, { PageTabProps } from './PageTabs';
-import Loading from '../molecules/Loading';
+import PageHeader, { PageHeaderProps } from './PageHeader.js';
+import PageTabs, { PageTabProps } from './PageTabs.js';
+import Loading from '../molecules/Loading.js';
 
 export default function PageContent({
   children,

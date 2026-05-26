@@ -1,4 +1,4 @@
-import { before, secondsToTime, toDate } from '../date';
+import { before, secondsToTime, toDate } from '../date.js';
 
 describe('date utils', () => {
   it('should convert string to date', () => {

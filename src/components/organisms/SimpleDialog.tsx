@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import type { DialogProps } from '@mui/material/Dialog';
 import type { ReactNode } from 'react';
-import DeleteButton from './SimpleDeleteConfirm';
+import DeleteButton from './SimpleDeleteConfirm.js';
 /*
 <SimpleDialog
   open={open}

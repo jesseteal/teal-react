@@ -1,4 +1,4 @@
-import { Button, Grid, MuiIcons, ThemeProvider } from '../index';
+import { Button, Grid, MuiIcons, ThemeProvider } from '../index.js';
 
 describe('mui entrypoint', () => {
   it('re-exports MUI Material components and icons', () => {

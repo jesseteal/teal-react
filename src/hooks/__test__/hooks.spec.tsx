@@ -11,7 +11,7 @@ import {
   useTrackObject,
   useWindowScroll,
   useWindowSize,
-} from '../index';
+} from '../index.js';
 
 describe('hooks index', () => {
   it('exports all hook helpers', () => {

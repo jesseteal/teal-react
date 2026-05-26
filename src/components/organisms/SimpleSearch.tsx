@@ -1,6 +1,6 @@
 import { Box, InputBase, IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
-import Icon from '../atoms/Icon';
+import Icon from '../atoms/Icon.js';
 
 export default function SimpleSearch({
   onFilter,

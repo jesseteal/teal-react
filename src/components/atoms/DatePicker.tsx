@@ -3,7 +3,7 @@ import { DatePicker as MuiDatePicker } from '@mui/x-date-pickers/DatePicker';
 import type { DatePickerProps as MuiDatePickerProps } from '@mui/x-date-pickers/DatePicker';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DB_DATE } from '../../utils/date';
+import { DB_DATE } from '../../utils/date.js';
 
 type DateValue = string | Date | Moment | null | undefined;
 

@@ -1,4 +1,4 @@
-import { Obfuscate } from '../obfuscate';
+import { Obfuscate } from '../obfuscate.js';
 
 describe('Obfuscate', () => {
   it('round trips numeric ids through the public helpers', () => {

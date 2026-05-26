@@ -6,7 +6,7 @@ import {
   DialogContent,
   DialogContentText,
 } from '@mui/material';
-import T from '../atoms/Typo';
+import T from '../atoms/Typo.js';
 /*
 usage
 <SimpleConfirm

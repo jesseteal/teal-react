@@ -1,10 +1,10 @@
 import React from 'react';
-import SimpleCard from './SimpleCard';
-import RawForm from './RawForm';
+import SimpleCard from './SimpleCard.js';
+import RawForm from './RawForm.js';
 // import { Utils } from '@jesseteal/teal-react'
-import { validate_fields } from '../../utils/validate';
-import { hasDiff } from '../../utils/helpers';
-import Icon from '../atoms/Icon';
+import { validate_fields } from '../../utils/validate.js';
+import { hasDiff } from '../../utils/helpers.js';
+import Icon from '../atoms/Icon.js';
 
 // import K from 'Constants'
 

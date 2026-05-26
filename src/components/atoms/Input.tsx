@@ -8,11 +8,11 @@ import {
   FormControlLabel,
   FormHelperText,
 } from '@mui/material';
-import { find, get, isNumeric, zeroIsOk } from '../../utils/helpers';
-import Icon from './Icon';
-import { formatPhone } from '../../utils/format';
-import DatePicker from './DatePicker';
-import DateTimePicker from './DateTimePicker';
+import { find, get, isNumeric, zeroIsOk } from '../../utils/helpers.js';
+import Icon from './Icon.js';
+import { formatPhone } from '../../utils/format.js';
+import DatePicker from './DatePicker.js';
+import DateTimePicker from './DateTimePicker.js';
 
 /*
 usage:

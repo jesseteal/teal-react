@@ -1,4 +1,4 @@
-import * as entry from '../index';
+import * as entry from '../index.js';
 
 describe('package entrypoint', () => {
   it('re-exports components, hooks, and utilities', () => {

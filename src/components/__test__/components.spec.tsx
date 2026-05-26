@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import * as components from '../index';
+import * as components from '../index.js';
 
 const {
   FileUploadButton,

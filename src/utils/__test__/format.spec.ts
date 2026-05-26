@@ -5,7 +5,7 @@ import {
   formatMoney,
   formatPhone,
   formatFileSize,
-} from '../format';
+} from '../format.js';
 
 describe('capitalize', () => {
   it('capitalizes the first letter of a string', () => {

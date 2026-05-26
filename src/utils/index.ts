@@ -1,18 +1,18 @@
-import * as helpers from './helpers';
-import * as date from './date';
-import * as token from './token';
-import * as format from './format';
-import * as numbers from './numbers';
+import * as helpers from './helpers.js';
+import * as date from './date.js';
+import * as token from './token.js';
+import * as format from './format.js';
+import * as numbers from './numbers.js';
 
-export { default as APIClient } from './APIClient';
-export * from './APIClient';
-export * from './date';
-export * from './format';
-export * from './helpers';
-export * from './numbers';
-export * from './obfuscate';
-export * from './token';
-export * from './validate';
+export { default as APIClient } from './APIClient.js';
+export * from './APIClient.js';
+export * from './date.js';
+export * from './format.js';
+export * from './helpers.js';
+export * from './numbers.js';
+export * from './obfuscate.js';
+export * from './token.js';
+export * from './validate.js';
 
 export const Utils = {
   ...helpers,

@@ -145,10 +145,13 @@ export function omitBy<T extends Record<string, any>>(
   obj: T,
   predicate: (value: T[keyof T], key: string) => boolean,
 ): Partial<T> {
-  return Object.entries(obj || {}).reduce<Partial<T>>((result, [key, value]) => {
-    if (!predicate(value, key)) {
-      result[key as keyof T] = value;
-    }
-    return result;
-  }, {});
+  return Object.entries(obj || {}).reduce<Partial<T>>(
+    (result, [key, value]) => {
+      if (!predicate(value, key)) {
+        result[key as keyof T] = value;
+      }
+      return result;
+    },
+    {},
+  );
 }

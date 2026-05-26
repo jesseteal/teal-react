@@ -9,7 +9,7 @@ import {
   isSet,
   zeroIsOk,
   searchObject,
-} from '../helpers';
+} from '../helpers.js';
 
 describe('helpers', () => {
   it('isNumeric', () => {
