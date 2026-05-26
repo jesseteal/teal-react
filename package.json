@@ -1,6 +1,6 @@
 {
   "name": "@jesseteal/teal-react",
-  "version": "3.0.0-a",
+  "version": "3.0.0-b",
   "description": "A bundle of reusable React files for re-use in my projects.",
   "type": "module",
   "main": "dist/index.js",
@@ -54,11 +54,11 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "typecheck": "tsc --noEmit",
-    "prepack": "pnpm typecheck && pnpm exec jest --runInBand --watchman=false && pnpm build",
+    "validate:package": "pnpm build && node ./scripts/validate-package.mjs",
+    "prepack": "pnpm typecheck && pnpm exec jest --runInBand --watchman=false && pnpm validate:package",
     "test": "jest --watchman=false"
   },
   "dependencies": {
-    "@jesseteal/teal-react": "link:",
     "jwt-decode": "^3.1.2",
     "moment": "^2.30.1",
     "validate.js": "^0.13.1"
